@@ -83,7 +83,7 @@ CREATE TABLE rental (
 
 CREATE TABLE payment (
     payment_id SERIAL PRIMARY KEY,
-    rental_id INTEGER NOT NULL,  -- Должен быть INTEGER для ссылки на SERIAL
+    rental_id INTEGER NOT NULL,
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     amount MONEY NOT NULL CHECK (amount > 0::MONEY),
     payment_method VARCHAR(20) NOT NULL CHECK (payment_method IN ('credit_card', 'debit_card', 'cash', 'bank_transfer')),
