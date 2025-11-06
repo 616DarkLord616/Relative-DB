@@ -1,4 +1,4 @@
-CREATE TABLE car_model (
+CREATE TABLE car_model ( 
     model_id SERIAL PRIMARY KEY,
     brand VARCHAR(50) NOT NULL,
     model_name VARCHAR(50) NOT NULL,
