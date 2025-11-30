@@ -36,3 +36,30 @@ INSERT INTO Order_Items (order_id, product_id, amount, price, total) VALUES (2, 
 SELECT * FROM Orders;
 SELECT * FROM Products;
 SELECT * FROM Order_Items;
+
+UPDATE Products
+SET p_name = 'product1'
+WHERE p_name = 'p1';
+
+DELETE FROM Order_Items
+WHERE order_id = 1 AND product_id = (SELECT p_id FROM Products WHERE p_name = 'p2');
+
+DELETE FROM Orders
+WHERE o_id = 2;
+
+UPDATE Products
+SET price = 5.00
+WHERE p_name = 'product1';
+
+UPDATE Order_Items
+SET price = 5.00, total = amount * 5.00
+WHERE product_id = (SELECT p_id FROM Products WHERE p_name = 'product1');
+
+INSERT INTO Orders (o_id, order_date) VALUES (3, CURRENT_DATE);
+
+INSERT INTO Order_Items (order_id, product_id, amount, price, total)
+VALUES (3, (SELECT p_id FROM Products WHERE p_name = 'product1'), 3, 5.00, 15.00);
+
+SELECT * FROM Orders;
+SELECT * FROM Products;
+SELECT * FROM Order_Items;
